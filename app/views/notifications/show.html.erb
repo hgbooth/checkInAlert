@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      Notification #<%= @the_notification.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/notifications">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_notification/<%= @the_notification.id %>">
+          Delete notification
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Flight datetime
+      </dt>
+      <dd>
+        <%= @the_notification.flight_datetime %>
+      </dd>
+
+      <dt>
+        Flight description
+      </dt>
+      <dd>
+        <%= @the_notification.flight_description %>
+      </dd>
+
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_notification.user_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_notification.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_notification.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit notification
+    </h2>
+
+    <form action="/modify_notification/<%= @the_notification.id %>"  method="post" >
+      <div>
+        <label for="flight_datetime_box">
+          Flight datetime
+        </label>
+
+        <input type="datetime-local" id="flight_datetime_box" name="query_flight_datetime"
+         value="<%= @the_notification.flight_datetime %>">
+      </div>
+
+      <div>
+        <label for="flight_description_box">
+          Flight description
+        </label>
+
+        <textarea id="flight_description_box" name="query_flight_description"><%= @the_notification.flight_description %></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_notification.user_id %>">
+      </div>
+
+      <button>
+        Update notification
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

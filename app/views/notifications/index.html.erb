@@ -1,0 +1,118 @@
+<div>
+  <div>
+    <h1>
+      List of all notifications
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new notification
+    </h2>
+
+    <form action="/insert_notification" method="post">
+      <div>
+        <label for="flight_datetime_box">
+          Flight datetime
+        </label>
+
+        <input type="datetime-local" id="flight_datetime_box" name="query_flight_datetime">
+      </div>
+
+      <div>
+        <label for="flight_description_box">
+          Flight description
+        </label>
+
+        <textarea id="flight_description_box" name="query_flight_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create notification
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Flight datetime
+        </th>
+
+        <th>
+          Flight description
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_notifications.each do |a_notification| %>
+      <tr>
+        <td>
+          <%= a_notification.id %>
+        </td>
+
+        <td>
+          <%= a_notification.flight_datetime %>
+        </td>
+
+        <td>
+          <%= a_notification.flight_description %>
+        </td>
+
+        <td>
+          <%= a_notification.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_notification.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_notification.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/notifications/<%= a_notification.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
