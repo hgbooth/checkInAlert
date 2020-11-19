@@ -12,6 +12,8 @@
 class User < ApplicationRecord
   validates :email, :uniqueness => { :case_sensitive => false }
   validates :email, :presence => true
+  # validates :phone_number, :uniqueness => { :case_sensitive => false }
+  validates :phone_number, :presence => true
   has_secure_password
 
   has_many(:notifications, { class_name: "Notification", foreign_key: "flight_description", dependent: :destroy })
